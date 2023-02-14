@@ -1,3 +1,4 @@
+import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,18 +11,17 @@ import { ProductService } from '../product.service';
   styleUrls: ['./show-products.component.css']
 })
 export class ShowProductsComponent implements OnInit {
-  products: Observable<Product[]>;
-
+  products: Observable<Product[]>;  
+  public validToken : string;
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
-    localStorage.setItem("token", "Bearer token");
     this.fetchProductList();
   }
 
   fetchProductList() {
+    console.log(localStorage.getItem('response'));
     this.products = this.productService.getProductsList();
-    console.log(localStorage.getItem("token"));
   }
 
   deleteProduct(id: number) {

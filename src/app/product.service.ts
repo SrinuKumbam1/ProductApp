@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Signin } from './signin';
@@ -13,14 +13,25 @@ private authURL = 'http://localhost:9090/product/api/auth'
   
 constructor(private http: HttpClient) { }
 
-  login(signin:Signin) {
+  login(signin:Signin) : Observable<any> {
     localStorage.setItem("username", signin.username);
     return this.http.post(this.authURL+'/signin', signin);
   }
   getProduct(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);
-    return this.http.get(this.baseUrl+'/product', {params:queryParams});
+
+    const headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    
+    const httpOptions = {
+      headers: headers_object
+    };
+
+  //  return this.http.get(this.baseUrl+'/product', {params:queryParams}, httpOptions);
+    return this.http.get(this.baseUrl+'/product?id='+id, httpOptions);
   }
 
   createProduct(product: Object): Observable<Object> {
@@ -34,10 +45,26 @@ constructor(private http: HttpClient) { }
   deleteProduct(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);
-    return this.http.delete(this.baseUrl+'/products', {params:queryParams});
+    const headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    
+    const httpOptions = {
+      headers: headers_object
+    };
+    return this.http.delete(this.baseUrl+'/products?id='+id, httpOptions);
   }
 
   getProductsList(): Observable<any> {
-    return this.http.get(this.baseUrl+'/products');
+        const headers_object = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        });
+
+        const httpOptions = {
+          headers: headers_object
+        };
+    return this.http.get(this.baseUrl+'/products', httpOptions);
   }
 }

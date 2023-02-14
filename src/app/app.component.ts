@@ -16,11 +16,11 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = localStorage.getItem("username");
+    this.isLoggedIn = localStorage.getItem('username');
   }
 
   logout(){
-    localStorage.removeItem("username");
+    localStorage.removeItem('username');
     this.goToHome();
   }
 
