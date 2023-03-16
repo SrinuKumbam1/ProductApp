@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationCancellationCode, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { JwtResp } from '../model/JwtResp';
-import { ProductService } from '../service/product.service';
-import { Signin } from '../model/signin';
+import { JwtResp } from '../../model/JwtResp';
+import { Signin } from '../../model/signin';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-login',

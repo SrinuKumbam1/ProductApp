@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateProductComponent } from './create-product/create-product.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { ReadProductComponent } from './read-product/read-product.component';
-import { ShowProductsComponent } from './show-products/show-products.component';
-import { UpdateProductComponent } from './update-product/update-product.component';
+import { CreateProductComponent } from './component/create-product/create-product.component';
+import { HomeComponent } from './component/home/home.component';
+import { LoginComponent } from './component/login/login.component';
+import { ReadProductComponent } from './component/read-product/read-product.component';
+import { ShowProductsComponent } from './component/show-products/show-products.component';
+import { UpdateProductComponent } from './component/update-product/update-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
