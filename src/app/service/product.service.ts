@@ -24,18 +24,6 @@ constructor(private http: HttpClient) { }
   getProduct(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);
-
-/*    const headers_object = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-    
-    const httpOptions = {
-      headers: headers_object
-    }; */
-
-  //  return this.http.get(this.baseUrl+'/product', {params:queryParams}, httpOptions);
-   // return this.http.get(this.baseUrl+'/product?id='+id, httpOptions);
     return this.http.get(this.baseUrl+'/product?id='+id)
   }
 
@@ -50,15 +38,8 @@ constructor(private http: HttpClient) { }
   deleteProduct(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);
-    const headers_object = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-    
-    const httpOptions = {
-      headers: headers_object
-    };
-    return this.http.delete(this.baseUrl+'/products?id='+id, httpOptions);
+  
+    return this.http.delete(this.baseUrl+'/products?id='+id);
   }
 
   getProductsList(): Observable<any> {
