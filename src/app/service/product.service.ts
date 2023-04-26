@@ -9,18 +9,9 @@ import { Signin } from '../model/signin';
 export class ProductService {
     
 private baseUrl = 'http://localhost:9090/product/productapi';
-public authURL = 'http://localhost:9090/product/api/auth'
   
 constructor(private http: HttpClient) { }
 
-  login(signin:Signin) : Observable<any> {
-    localStorage.setItem("username", signin.username);
-    return this.http.post(this.authURL+'/signin', signin);
-  }
-
-  loadToken() {
-    return localStorage.getItem('token');
-  }
   getProduct(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);

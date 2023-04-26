@@ -19,7 +19,8 @@
       <label for="name">couponCode</label>
       <input type="text" class="form-control" id="couponCode" required [(ngModel)]="product.couponCode" name="couponCode">
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">S          ubmit</button>
+    <button (click)="gotoProductList()" class="btn btn-info" style="margin-left: 10px">Cancel</button>
   </form>
 </div>
 

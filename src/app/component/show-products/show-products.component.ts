@@ -13,7 +13,7 @@ import { ProductService } from '../../service/product.service';
 export class ShowProductsComponent implements OnInit {
   products: Observable<Product[]>;  
   public validToken : string;
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router) {  }
 
   ngOnInit() {
     this.fetchProductList();

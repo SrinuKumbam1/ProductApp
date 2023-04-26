@@ -13,6 +13,7 @@ import { LoginComponent } from './component/login/login.component';
 import { ReadProductComponent } from './component/read-product/read-product.component';
 import { ShowProductsComponent } from './component/show-products/show-products.component';
 import { UpdateProductComponent } from './component/update-product/update-product.component';
+import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UpdateProductComponent } from './component/update-product/update-produc
     CreateProductComponent,
     LoginComponent,
     ReadProductComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +8,29 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  isLoggedIn : any;
+  isLoggedIn =false;
   title = 'ProductApp';
   
   constructor(private router: Router){
-
+    router.events.subscribe(
+      (val)=>{
+        if(val instanceof NavigationEnd){
+          if(val.url=='/login'){
+            this.isLoggedIn = false;
+          }
+          else if(val.url == '/'){
+            this.isLoggedIn = false;
+          }
+          else{
+            this.isLoggedIn = true;
+          }
+        }
+      }
+    )
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = localStorage.getItem('username');
+
   }
 
-  logout(){
-    localStorage.removeItem('username');
-    this.goToHome();
-  }
-
-  goToHome(){
-    this.router.navigate(['']);
-  }
 }
